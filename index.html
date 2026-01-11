@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whole Body Wellness | Holistic Healthcare Center</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#EBF4F6', // Very pale blue
+                            DEFAULT: '#7CA9B6', // Muted Blue/Teal
+                            dark: '#3F626E', // Deep Teal
+                            accent: '#D4C4B5', // Warm Sand
+                            text: '#2D3748', // Slate
+                        },
+                        wellness: {
+                            bg: '#F9FAF9', // Off white
+                            card: '#FFFFFF',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for nuances Tailwind might miss */
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #2D3748;
+            background-color: #F9FAF9;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(rgba(45, 55, 72, 0), rgba(45, 55, 72, 0));
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card-img {
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-card-img {
+            transform: scale(1.05);
+        }
+
+        /* Smooth mobile menu transition */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-700">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-seedling text-brand-dark text-2xl"></i>
+                    <span class="font-serif font-bold text-2xl text-gray-800 tracking-tight">Whole Body<span class="text-brand">Wellness</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#" class="text-gray-600 hover:text-brand-dark font-medium transition">Home</a>
+                    <a href="#treatments" class="text-gray-600 hover:text-brand-dark font-medium transition">Treatments</a>
+                    <a href="#about" class="text-gray-600 hover:text-brand-dark font-medium transition">About Us</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-brand-dark font-medium transition">Stories</a>
+                    <a href="#contact" class="bg-brand hover:bg-brand-dark text-white px-6 py-2.5 rounded-full font-medium transition shadow-lg shadow-brand/30">
+                        Book Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-dark focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-dark hover:bg-gray-50">Home</a>
+                <a href="#treatments" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-dark hover:bg-gray-50">Treatments</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-dark hover:bg-gray-50">About Us</a>
+                <a href="#contact" class="block w-full text-center mt-4 bg-brand text-white px-4 py-3 rounded-lg font-medium shadow-md">Book Appointment</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Wellness Spa" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent sm:from-white/80 sm:via-white/20"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-2xl" data-aos="fade-up" data-aos-duration="1000">
+                <span class="block text-brand-dark font-bold tracking-wider uppercase text-sm mb-4">Holistic Healing Center</span>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
+                    Welcome to <br>
+                    <span class="text-brand-dark italic">Whole Body Wellness</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed max-w-lg">
+                    Reclaim your balance and vitality through our personalized, holistic approach to healthcare. We combine modern medicine with timeless healing traditions.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-brand-dark text-white rounded-full font-semibold shadow-lg hover:bg-gray-800 transition duration-300 text-center">
+                        Book Appointment
+                    </a>
+                    <a href="tel:+1234567890" class="px-8 py-4 bg-white text-brand-dark border border-brand-dark rounded-full font-semibold shadow-md hover:bg-gray-50 transition duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone"></i> Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Holistic Treatments Section -->
+    <section id="treatments" class="py-24 bg-brand-light/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand font-semibold tracking-wider uppercase text-sm">Our Services</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">Holistic Treatments</h2>
+                <div class="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div class="service-card group bg-white rounded-2xl shadow-soft shadow-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition z-10"></div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqDcdpC25PiNeR_loQFOLAf_wbRlq8z5NJuQ&s" alt="Chiropractic" class="service-card-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Chiropractic Care</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Restore spinal alignment and nervous system function with our gentle, precise adjustments tailored to your body.</p>
+                        <a href="#" class="inline-flex items-center text-brand-dark font-semibold hover:text-brand transition">
+                            Learn More <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card group bg-white rounded-2xl shadow-soft shadow-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Massage" class="service-card-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Medical Massage</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Alleviate chronic pain, reduce stress, and improve circulation through therapeutic massage techniques.</p>
+                        <a href="#" class="inline-flex items-center text-brand-dark font-semibold hover:text-brand transition">
+                            Learn More <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card group bg-white rounded-2xl shadow-soft shadow-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Acupuncture" class="service-card-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Acupuncture</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Balance your body's energy flow and stimulate natural healing with traditional Eastern medicine practices.</p>
+                        <a href="#" class="inline-flex items-center text-brand-dark font-semibold hover:text-brand transition">
+                            Learn More <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Image Side -->
+                <div class="w-full lg:w-1/2 relative" data-aos="fade-right">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand-accent/30 rounded-full z-0"></div>
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-brand/20 rounded-full z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Consultation" class="relative z-10 rounded-2xl shadow-2xl w-full object-cover h-[500px]">
+                </div>
+
+                <!-- Text Side -->
+                <div class="w-full lg:w-1/2" data-aos="fade-left">
+                    <span class="text-brand font-semibold tracking-wider uppercase text-sm">About Us</span>
+                    <h2 class="text-4xl font-bold text-gray-800 mt-2 mb-6">Dedicated to Your Complete Well-being</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        At Whole Body Wellness, we believe that true health is more than just the absence of disease. It is a state of balance between body, mind, and spirit. Our clinic provides a sanctuary where patients are heard, understood, and treated with compassion.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Our integrated team collaborates to create personalized treatment plans that address the root cause of your symptoms, not just the pain itself.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-dark">
+                                <i class="fa-solid fa-user-doctor"></i>
+                            </div>
+                            <span class="font-semibold text-gray-700">Licensed Professionals</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-dark">
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                            </div>
+                            <span class="font-semibold text-gray-700">Personalized Care</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-dark">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <span class="font-semibold text-gray-700">Team-Based Approach</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-dark">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="font-semibold text-gray-700">5-Star Patient Rating</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-block px-8 py-3 bg-brand text-white rounded-lg font-medium shadow-md hover:bg-brand-dark transition">Meet The Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 bg-brand-light/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Why Choose Whole Body</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">We strive to provide an environment that fosters healing from the moment you walk through our doors.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 mx-auto bg-brand-light rounded-full flex items-center justify-center text-brand-dark text-xl mb-6">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Integrative Medicine</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Combining the best of Western and Eastern medical practices.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 mx-auto bg-brand-light rounded-full flex items-center justify-center text-brand-dark text-xl mb-6">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Easy Scheduling</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Flexible hours and online booking to fit your busy lifestyle.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 mx-auto bg-brand-light rounded-full flex items-center justify-center text-brand-dark text-xl mb-6">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Natural Therapies</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Focusing on natural healing methods and minimal invasiveness.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 mx-auto bg-brand-light rounded-full flex items-center justify-center text-brand-dark text-xl mb-6">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Insurance Accepted</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">We work with major providers to make care accessible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-24 bg-brand-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold font-serif">Patient Stories</h2>
+                <div class="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white text-gray-800 p-8 rounded-2xl relative" data-aos="zoom-in" data-aos-delay="0">
+                    <i class="fa-solid fa-quote-left text-brand-accent/50 text-5xl absolute top-4 left-4 -z-0"></i>
+                    <div class="relative z-10">
+                        <div class="flex text-yellow-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">"I've suffered from chronic back pain for years. After just a few weeks of chiropractic care here, I feel like a new person. Truly grateful."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Patient" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Sarah Jenkins</h4>
+                                <span class="text-xs text-gray-500 uppercase tracking-wide">Chiropractic Patient</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white text-gray-800 p-8 rounded-2xl relative" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fa-solid fa-quote-left text-brand-accent/50 text-5xl absolute top-4 left-4 -z-0"></i>
+                    <div class="relative z-10">
+                        <div class="flex text-yellow-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">"The atmosphere is so calming. The acupuncture treatments have significantly reduced my stress and migraines. Highly recommended!"</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Patient" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Michael Ross</h4>
+                                <span class="text-xs text-gray-500 uppercase tracking-wide">Acupuncture Patient</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white text-gray-800 p-8 rounded-2xl relative" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fa-solid fa-quote-left text-brand-accent/50 text-5xl absolute top-4 left-4 -z-0"></i>
+                    <div class="relative z-10">
+                        <div class="flex text-yellow-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">"The medical massage therapy was exactly what I needed after my injury. The staff is professional, kind, and very skilled."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Patient" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Elena Rodriguez</h4>
+                                <span class="text-xs text-gray-500 uppercase tracking-wide">Massage Patient</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="relative py-24 flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Meditation" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-brand-dark/80"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">Ready to Start Your Healing Journey?</h2>
+            <p class="text-gray-200 text-lg mb-8 max-w-2xl mx-auto">Take the first step towards a healthier, more balanced life today. Our team is ready to welcome you.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="px-8 py-4 bg-brand-accent text-gray-900 rounded-full font-bold shadow-lg hover:bg-white transition duration-300">
+                    Book Your Appointment
+                </a>
+                <a href="#" class="px-8 py-4 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-brand-dark transition duration-300">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <i class="fa-solid fa-seedling text-brand text-2xl"></i>
+                        <span class="font-serif font-bold text-2xl text-white tracking-tight">Whole Body<span class="text-brand">Wellness</span></span>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                        Empowering you to live a healthier, happier life through holistic and integrative healthcare solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand transition text-white">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand transition text-white">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand transition text-white">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-serif font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-brand transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-brand transition">About Us</a></li>
+                        <li><a href="#treatments" class="hover:text-brand transition">Services</a></li>
+                        <li><a href="#testimonials" class="hover:text-brand transition">Testimonials</a></li>
+                        <li><a href="#contact" class="hover:text-brand transition">Book Appointment</a></li>
+                    </ul>
+                </div>
+
+                <!-- Hours -->
+                <div>
+                    <h4 class="text-white font-serif font-bold text-lg mb-6">Opening Hours</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex justify-between"><span>Mon - Fri:</span> <span>9:00 AM - 6:00 PM</span></li>
+                        <li class="flex justify-between"><span>Saturday:</span> <span>10:00 AM - 4:00 PM</span></li>
+                        <li class="flex justify-between"><span>Sunday:</span> <span>Closed</span></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div id="contact">
+                    <h4 class="text-white font-serif font-bold text-lg mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-brand"></i>
+                            <span>123 Serenity Way, Suite 100<br>Wellness City, CA 90210</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-brand"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-brand"></i>
+                            <span>hello@wholebodywellness.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-xs text-gray-500">
+                <p>&copy; 2026 Whole Body Wellness || All rights reserved || Design BY Muhitul Islam</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+
+        // Sticky Navbar Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
